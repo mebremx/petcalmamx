@@ -1,0 +1,94 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-product",
+      "settings": {
+        "eyebrow": "Pet Calma MX",
+        "title": "Tu mascota más tranquila en minutos",
+        "subtitle": "El tapete lamedor que convierte el baño y el corte de uñas en un momento relajante. Menos estrés, más amor.",
+        "cta_text": "Comprar ahora",
+        "cta_secondary_text": "Ver cómo funciona",
+        "cta_secondary_url": "#como-funciona",
+        "badge_text": "+1,200 mascotas felices",
+        "trust_1": "Envío en 3-5 días",
+        "trust_2": "Pago seguro",
+        "trust_3": "Garantía 30 días"
+      }
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "icon": "heart", "title": "Reduce la ansiedad", "text": "El movimiento de lamer libera endorfinas que calman a tu mascota de forma natural." } },
+        "b2": { "type": "benefit", "settings": { "icon": "shower", "title": "Ideal para baño y uñas", "text": "Se pega a la pared con succión. Tu perro se queda quieto mientras lo bañas o le cortas las uñas." } },
+        "b3": { "type": "benefit", "settings": { "icon": "brain", "title": "Estimula la mente", "text": "Las texturas distintas mantienen a tu mascota concentrada y reducen comportamiento destructivo." } },
+        "b4": { "type": "benefit", "settings": { "icon": "sparkles", "title": "Fácil de limpiar", "text": "Apto para lavavajillas. Material de silicona libre de BPA, seguro para mascotas." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {
+        "eyebrow": "Por qué Pet Calma",
+        "title": "Calma, entretenimiento y bienestar para tu mascota",
+        "subtitle": "Diseñado para resolver los momentos más estresantes del día con una experiencia que tu mascota va a amar."
+      }
+    },
+    "how": {
+      "type": "how-it-works",
+      "blocks": {
+        "s1": { "type": "step", "settings": { "title": "Pega el tapete", "text": "Las ventosas se adhieren a cualquier superficie lisa: pared de la regadera, refrigerador o piso." } },
+        "s2": { "type": "step", "settings": { "title": "Unta el premio", "text": "Crema de cacahuate, paté, yogurt natural o comida húmeda. Tu mascota elige su sabor favorito." } },
+        "s3": { "type": "step", "settings": { "title": "Disfruta la calma", "text": "Tu mascota lame relajada por 10-30 minutos. Tú baña, cortas uñas o simplemente respiras." } }
+      },
+      "block_order": ["s1", "s2", "s3"],
+      "settings": {
+        "eyebrow": "Súper fácil",
+        "title": "Cómo funciona en 3 pasos",
+        "subtitle": "Sin instrucciones complicadas. Sin entrenamiento. Solo paz y diversión.",
+        "cta_text": "Quiero el mío"
+      }
+    },
+    "social": {
+      "type": "social-proof",
+      "blocks": {
+        "t1": { "type": "testimonial", "settings": { "text": "Mi perrita odiaba bañarse. Le pego el tapete con crema de cacahuate y se queda super tranquila. Cambió todo.", "name": "María L.", "meta": "CDMX · Dueña de Luna 🐶" } },
+        "t2": { "type": "testimonial", "settings": { "text": "Compré uno para mi gata ansiosa. Ahora lo usa todos los días con paté y dejó de arañar el sillón. Vale cada peso.", "name": "Andrea G.", "meta": "Guadalajara · Dueña de Mishi 🐱" } },
+        "t3": { "type": "testimonial", "settings": { "text": "El corte de uñas era una tortura. Con el lick mat le pongo yogurt y termina antes de que termine. Recomendadísimo.", "name": "Diego R.", "meta": "Monterrey · Papá de Toby 🐶" } }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {
+        "eyebrow": "Lo que dicen nuestros clientes",
+        "title": "+1,200 mascotas más felices",
+        "show_stats": true,
+        "stat_1_num": "1,200+",
+        "stat_1_label": "Mascotas felices",
+        "stat_2_num": "4.9★",
+        "stat_2_label": "Calificación promedio",
+        "stat_3_num": "30 días",
+        "stat_3_label": "De garantía"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "f1": { "type": "faq", "settings": { "question": "¿Es seguro para mi mascota?", "answer": "Sí. Está hecho 100% de silicona de grado alimenticio, libre de BPA y materiales tóxicos. Es el mismo material usado en utensilios de cocina para bebés." } },
+        "f2": { "type": "faq", "settings": { "question": "¿Para qué mascotas funciona?", "answer": "Para perros y gatos de todos los tamaños. Es especialmente útil con mascotas ansiosas, cachorros, perros que odian bañarse o gatos que arañan muebles por aburrimiento." } },
+        "f3": { "type": "faq", "settings": { "question": "¿Cómo se limpia?", "answer": "Muy fácil. Puedes lavarlo con agua y jabón, o meterlo al lavavajillas. Las cerdas de silicona no retienen olores ni bacterias." } },
+        "f4": { "type": "faq", "settings": { "question": "¿Qué le pongo encima?", "answer": "Crema de cacahuate sin xilitol, paté para perros, yogurt natural sin azúcar, comida húmeda, plátano machacado o cualquier alimento blando que tu mascota disfrute." } },
+        "f5": { "type": "faq", "settings": { "question": "¿Cuánto tarda el envío?", "answer": "Enviamos en 24-48 horas hábiles. Llega en 3-5 días hábiles a toda la República. Envío gratis en compras +$499 MXN." } },
+        "f6": { "type": "faq", "settings": { "question": "¿Tiene garantía?", "answer": "Sí. Garantía de satisfacción de 30 días. Si tu mascota no lo ama, te devolvemos tu dinero." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
+      "settings": {
+        "eyebrow": "Preguntas frecuentes",
+        "title": "Resuelve tus dudas"
+      }
+    },
+    "cta": {
+      "type": "cta-final",
+      "settings": {
+        "title": "Menos estrés, más amor",
+        "subtitle": "Únete a más de 1,200 dueños que ya transformaron los momentos más difíciles con sus mascotas en momentos de paz.",
+        "cta_text": "Comprar ahora"
+      }
+    }
+  },
+  "order": ["hero", "benefits", "how", "social", "faq", "cta"]
+}

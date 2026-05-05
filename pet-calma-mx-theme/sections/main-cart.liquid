@@ -1,0 +1,76 @@
+<section class="cart">
+  <div class="container">
+    <h1 class="cart__title">Tu carrito</h1>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="cart__empty">
+        <h2>Tu carrito está vacío 🐾</h2>
+        <p>Agrega un Lick Mat y dale a tu mascota momentos de calma.</p>
+        <a href="{{ routes.root_url }}" class="btn btn--primary btn--lg" style="margin-top:1rem;">
+          Ver productos
+        </a>
+      </div>
+    {%- else -%}
+      <form action="{{ routes.cart_url }}" method="post" novalidate>
+        <div class="cart__items">
+          {%- for item in cart.items -%}
+            <div class="cart-item">
+              <div class="cart-item__image">
+                {%- if item.image != blank -%}
+                  <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" loading="lazy" width="200" height="200">
+                {%- endif -%}
+              </div>
+
+              <div class="cart-item__info">
+                <h3 class="cart-item__title">{{ item.product.title }}</h3>
+                {%- unless item.product.has_only_default_variant -%}
+                  <span class="cart-item__variant">{{ item.variant.title }}</span>
+                {%- endunless -%}
+                <span class="cart-item__price">{{ item.final_line_price | money }}</span>
+
+                <div class="cart-item__actions">
+                  <div class="product__quantity" data-qty>
+                    <button type="button" data-action="decrease" aria-label="Disminuir">−</button>
+                    <input type="number" name="updates[{{ item.key }}]" value="{{ item.quantity }}" min="0" inputmode="numeric">
+                    <button type="button" data-action="increase" aria-label="Aumentar">+</button>
+                  </div>
+                  <a href="{{ item.url_to_remove }}" class="cart-item__remove">Quitar</a>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="cart__summary">
+          <div class="cart__row">
+            <span>Subtotal</span>
+            <span>{{ cart.items_subtotal_price | money }}</span>
+          </div>
+          <div class="cart__row">
+            <span>Envío</span>
+            <span style="color: var(--color-text-muted);">Calculado en el checkout</span>
+          </div>
+          <div class="cart__row cart__row--total">
+            <span>Total</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+
+          <button type="submit" name="update" class="btn btn--secondary" style="margin-top:1rem; width:100%;">
+            Actualizar carrito
+          </button>
+          <button type="submit" name="checkout" class="btn btn--primary btn--lg cart__checkout">
+            Finalizar compra
+          </button>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Carrito principal",
+  "settings": [],
+  "presets": [{ "name": "Carrito" }]
+}
+{% endschema %}

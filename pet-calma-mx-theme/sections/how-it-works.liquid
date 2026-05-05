@@ -1,0 +1,65 @@
+<section class="section section--cream how-it-works" id="como-funciona">
+  <div class="container">
+    <header class="benefits__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      <h2>{{ section.settings.title }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="benefits__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </header>
+
+    <div class="steps__grid">
+      {%- for block in section.blocks -%}
+        <article class="step" {{ block.shopify_attributes }}>
+          <span class="step__num">{{ forloop.index }}</span>
+          <h3 class="step__title">{{ block.settings.title }}</h3>
+          <p class="step__text">{{ block.settings.text }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_url != blank -%}
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="{{ section.settings.cta_url }}" class="btn btn--primary btn--lg">
+          {{ section.settings.cta_text | default: 'Quiero el mío' }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cómo funciona",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Etiqueta superior", "default": "Súper fácil" },
+    { "type": "text", "id": "title", "label": "Título", "default": "Cómo funciona en 3 pasos" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtítulo", "default": "Sin instrucciones complicadas. Sin entrenamiento. Solo paz y diversión." },
+    { "type": "text", "id": "cta_text", "label": "Texto del botón", "default": "Quiero el mío" },
+    { "type": "url", "id": "cta_url", "label": "Enlace del botón" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Paso",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "Paso" },
+        { "type": "textarea", "id": "text", "label": "Descripción", "default": "Descripción del paso." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cómo funciona",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Pega el tapete", "text": "Las ventosas se adhieren a cualquier superficie lisa: pared de la regadera, refrigerador o piso." } },
+        { "type": "step", "settings": { "title": "Unta el premio", "text": "Crema de cacahuate, paté, yogurt natural o comida húmeda. Tu mascota elige su sabor favorito." } },
+        { "type": "step", "settings": { "title": "Disfruta la calma", "text": "Tu mascota lame relajada por 10-30 minutos. Tú baña, cortas uñas o simplemente respiras." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

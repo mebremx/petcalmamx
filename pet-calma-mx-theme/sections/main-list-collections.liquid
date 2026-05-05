@@ -1,0 +1,26 @@
+<section class="section">
+  <div class="container">
+    <h1 style="color: var(--color-primary-dark); text-align:center; margin-bottom:2rem;">Colecciones</h1>
+    <div style="display:grid; gap:1.25rem; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
+      {%- for collection in collections -%}
+        <a href="{{ collection.url }}" style="display:block; background:#fff; border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--color-border);">
+          {%- if collection.featured_image != blank -%}
+            <div style="aspect-ratio:1/1; background:var(--color-cream); overflow:hidden;">
+              <img src="{{ collection.featured_image | image_url: width: 600 }}" alt="{{ collection.title }}" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+          {%- endif -%}
+          <div style="padding:1rem;">
+            <h3 style="font-size:1rem; margin:0;">{{ collection.title }}</h3>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Listado de colecciones",
+  "settings": []
+}
+{% endschema %}

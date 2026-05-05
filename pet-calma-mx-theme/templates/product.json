@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "qb1": { "type": "quick_benefit", "settings": { "text": "Silicona segura libre de BPA" } },
+        "qb2": { "type": "quick_benefit", "settings": { "text": "Apto para lavavajillas" } },
+        "qb3": { "type": "quick_benefit", "settings": { "text": "Envío en 3-5 días a todo México" } },
+        "qb4": { "type": "quick_benefit", "settings": { "text": "Garantía de satisfacción 30 días" } }
+      },
+      "block_order": ["qb1", "qb2", "qb3", "qb4"],
+      "settings": {}
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "icon": "heart", "title": "Reduce la ansiedad", "text": "El movimiento de lamer libera endorfinas que calman a tu mascota de forma natural." } },
+        "b2": { "type": "benefit", "settings": { "icon": "shower", "title": "Ideal para baño y uñas", "text": "Se pega a la pared con succión. Tu perro se queda quieto mientras lo bañas o le cortas las uñas." } },
+        "b3": { "type": "benefit", "settings": { "icon": "brain", "title": "Estimula la mente", "text": "Las texturas distintas mantienen a tu mascota concentrada y reducen comportamiento destructivo." } },
+        "b4": { "type": "benefit", "settings": { "icon": "sparkles", "title": "Fácil de limpiar", "text": "Apto para lavavajillas. Material de silicona libre de BPA." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {
+        "eyebrow": "Beneficios",
+        "title": "Diseñado para mascotas reales",
+        "subtitle": "Cuatro razones por las que +1,200 dueños lo recomiendan."
+      }
+    },
+    "social": {
+      "type": "social-proof",
+      "blocks": {
+        "t1": { "type": "testimonial", "settings": { "text": "Mi perrita odiaba bañarse. Ahora se queda super tranquila. Cambió todo.", "name": "María L.", "meta": "CDMX · Dueña de Luna 🐶" } },
+        "t2": { "type": "testimonial", "settings": { "text": "Mi gata ansiosa ya no araña el sillón. Vale cada peso.", "name": "Andrea G.", "meta": "Guadalajara · Dueña de Mishi 🐱" } },
+        "t3": { "type": "testimonial", "settings": { "text": "El corte de uñas dejó de ser tortura. Recomendadísimo.", "name": "Diego R.", "meta": "Monterrey · Papá de Toby 🐶" } }
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {
+        "eyebrow": "Reseñas verificadas",
+        "title": "Lo que dicen los dueños",
+        "show_stats": false
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "f1": { "type": "faq", "settings": { "question": "¿Es seguro?", "answer": "Sí, silicona de grado alimenticio libre de BPA." } },
+        "f2": { "type": "faq", "settings": { "question": "¿Para qué mascotas funciona?", "answer": "Perros y gatos de todos los tamaños." } },
+        "f3": { "type": "faq", "settings": { "question": "¿Cómo se limpia?", "answer": "Agua y jabón o lavavajillas." } },
+        "f4": { "type": "faq", "settings": { "question": "¿Cuánto tarda el envío?", "answer": "3-5 días hábiles a toda la República." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"],
+      "settings": {
+        "eyebrow": "Resuelve tus dudas",
+        "title": "Preguntas frecuentes"
+      }
+    }
+  },
+  "order": ["main", "benefits", "social", "faq"]
+}

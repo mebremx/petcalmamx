@@ -1,0 +1,174 @@
+<section class="product">
+  <div class="container">
+    <div class="product__grid">
+      <div class="product__gallery" data-product-gallery>
+        <div class="product__media-main">
+          {%- if product.featured_image != blank -%}
+            <img
+              data-main-image
+              src="{{ product.featured_image | image_url: width: 1200 }}"
+              alt="{{ product.featured_image.alt | default: product.title | escape }}"
+              width="1200"
+              height="1200"
+              loading="eager"
+              fetchpriority="high">
+          {%- endif -%}
+        </div>
+
+        {%- if product.images.size > 1 -%}
+          <div class="product__thumbs">
+            {%- for image in product.images limit: 8 -%}
+              <button
+                type="button"
+                class="product__thumb {% if forloop.first %}is-active{% endif %}"
+                data-thumb
+                data-src="{{ image | image_url: width: 1200 }}"
+                aria-label="Imagen {{ forloop.index }}">
+                <img src="{{ image | image_url: width: 200 }}" alt="" loading="lazy" width="200" height="200">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="product__info">
+        <div class="product__rating">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span>4.9 · +1,200 mascotas felices</span>
+        </div>
+
+        <h1 class="product__title">{{ product.title }}</h1>
+
+        <div class="product__price">
+          <span class="product__price-current" data-product-price>
+            {{ product.selected_or_first_available_variant.price | money }}
+          </span>
+          {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+            <span class="product__price-compare" data-product-compare>
+              {{ product.selected_or_first_available_variant.compare_at_price | money }}
+            </span>
+            {%- assign savings = product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price -%}
+            <span class="product__price-save" data-product-save>
+              Ahorra {{ savings | money_without_trailing_zeros }}
+            </span>
+          {%- else -%}
+            <span class="product__price-save" data-product-save style="display:none;"></span>
+          {%- endif -%}
+        </div>
+
+        {%- if section.settings.short_description != blank -%}
+          <p class="product__short">{{ section.settings.short_description }}</p>
+        {%- elsif product.description != blank -%}
+          <div class="product__short">{{ product.description | strip_html | truncatewords: 35 }}</div>
+        {%- endif -%}
+
+        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" novalidate>
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="product__variants" data-variant-selector>
+                <span class="product__variant-label">{{ option.name }}: <strong data-selected-{{ option.position }}>{{ option.selected_value }}</strong></span>
+                <div class="product__variant-options">
+                  {%- for variant in product.variants -%}
+                    {%- assign value = variant.options[forloop.parentloop.index0] -%}
+                    {%- if option.position == forloop.parentloop.index -%}
+                      <button
+                        type="button"
+                        class="product__variant-option {% if variant == product.selected_or_first_available_variant %}is-active{% endif %}"
+                        data-variant="{{ variant.id }}"
+                        data-price="{{ variant.price | money }}"
+                        data-compare="{{ variant.compare_at_price | money }}"
+                        data-available="{{ variant.available }}"
+                        {% unless variant.available %}disabled{% endunless %}>
+                        {{ value }}
+                      </button>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          <div class="product__variants">
+            <span class="product__variant-label">Cantidad</span>
+            <div class="product__quantity" data-qty>
+              <button type="button" data-action="decrease" aria-label="Disminuir">−</button>
+              <input type="number" name="quantity" value="1" min="1" inputmode="numeric">
+              <button type="button" data-action="increase" aria-label="Aumentar">+</button>
+            </div>
+          </div>
+
+          <div class="product__buttons">
+            <button
+              type="submit"
+              class="btn btn--primary btn--lg"
+              data-add-to-cart
+              data-text-add="Agregar al carrito"
+              {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+              {%- if product.selected_or_first_available_variant.available -%}
+                Agregar al carrito
+              {%- else -%}
+                Agotado
+              {%- endif -%}
+            </button>
+            <button type="button" class="btn btn--accent btn--lg" data-buy-now>
+              Comprar ahora
+            </button>
+          </div>
+        </form>
+
+        <div class="product__quick-benefits">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'quick_benefit' -%}
+              <div class="product__quick-benefits-item" {{ block.shopify_attributes }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>{{ block.settings.text }}</span>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="product__description">
+            <h3>Descripción</h3>
+            <div>{{ product.description }}</div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Producto principal",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "short_description",
+      "label": "Descripción corta (opcional, sobreescribe la del producto)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quick_benefit",
+      "name": "Beneficio rápido (con check)",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texto", "default": "Envío gratis en pedidos +$499" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Producto principal",
+      "blocks": [
+        { "type": "quick_benefit", "settings": { "text": "Silicona segura libre de BPA" } },
+        { "type": "quick_benefit", "settings": { "text": "Apto para lavavajillas" } },
+        { "type": "quick_benefit", "settings": { "text": "Envío en 3-5 días a todo México" } },
+        { "type": "quick_benefit", "settings": { "text": "Garantía de satisfacción 30 días" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
